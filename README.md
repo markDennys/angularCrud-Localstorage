@@ -7,4 +7,4 @@
 ![preview do projeto ](https://i.imgur.com/XPDKoO8.jpg)
 
 
-você pode acessá-lo clicando aqui : 
+check it out : https://angular-crud-localstorage.vercel.app/
