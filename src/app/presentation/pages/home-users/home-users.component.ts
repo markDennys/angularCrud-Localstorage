@@ -12,6 +12,7 @@ export class HomeUsersComponent implements OnInit {
 
   ngOnInit(): void {
     this.users = this.userSerice.getUsers();
+   
   }
   deleteUser(user : UsersInterface) {
     this.users.splice(this.users.indexOf(user),1)

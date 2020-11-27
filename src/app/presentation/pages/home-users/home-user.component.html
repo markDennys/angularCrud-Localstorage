@@ -8,10 +8,26 @@
                 </h3>
                 <p class="card-text">Olá, esse é meu email : {{user.email}}</p>
                 <p class="card-text">stack: {{user.stack}} </p>
-                <a class="btn btn-warning mr-2" [routerLink]="['/editar', user.code]" routerLinkActive="router-link-active"  >Editar</a>
+                <a class="btn btn-warning mr-2" [routerLink]="['/editar', user.code]"
+                    routerLinkActive="router-link-active">Editar</a>
                 <button class="btn btn-danger" (click)="deleteUser(user)">Deletar</button>
             </div>
         </div>
     </div>
 
+</div>
+
+
+<div class="row  justify-content-md-center mt-4" *ngIf="users[0] === undefined">
+    <div class="col-md-8 ">
+        <div class="card text-center mt-4">
+
+            <div class="card-body">
+                <h5 class="card-title">Fala parça !</h5>
+                <p class="card-text">Aqui está tudo vazio.</p>
+                <a [routerLink]="['/cadastrar']" routerLinkActive="router-link-active"  class="btn btn-primary">Cadastrar</a>
+            </div>
+
+        </div>
+    </div>
 </div>
