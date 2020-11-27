@@ -1,23 +1,38 @@
+import { UsersInterface } from './../interfaces/users.interface';
 import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root',
 })
-
 export class UserService {
+  local = JSON.parse(localStorage.getItem('users') || '[]');
+
   constructor() {}
 
-  public saveUser(valor: any) {
-    if (localStorage.getItem('user') === null) {
-      localStorage.setItem('user', JSON.stringify([valor]));
+  saveUser(user: UsersInterface): void {
+    if (localStorage.getItem('users') === null) {
+      localStorage.setItem('users', JSON.stringify([user]));
     } else {
-      let local = JSON.parse(localStorage.getItem('user') || '[]');
-      local.push(valor);
-      localStorage.setItem('user', JSON.stringify(local));
+      this.local.push(user);
+      localStorage.setItem('users', JSON.stringify(this.local));
     }
   }
 
-  public getUsers() {
-    return JSON.parse(localStorage.getItem('user') || '[]');
+  getUsers(): UsersInterface[] {
+    return this.local;
+  }
+
+  getUsersByCode(code: number): UsersInterface {
+    return this.local.find((user: UsersInterface) => user.code === code);
+  }
+
+  editUser(user: UsersInterface): void {
+    let userEdited = this.local.indexOf(user);
+    this.local.splice(userEdited, 1, user);
+    localStorage.setItem('users', JSON.stringify(this.local));
+  }
+
+  deleteUser(users: UsersInterface[]) {
+    localStorage.setItem('users', JSON.stringify(users));
   }
 }

@@ -1,22 +1,20 @@
-import { HomeModule } from './presentation/pages/home/home.module';
-import { CommonModule } from '@angular/common';
+import { SharedModule } from './presentation/pages/shared/shared.module';
+import { HomeUserModule } from './presentation/pages/home-users/home-user.module';
 import { UserService } from './core/services/user.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { UserModule } from './presentation/pages/user-signUp/user.module';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     AppRoutingModule,
     BrowserModule,
-    CommonModule,
-    FormsModule,
-    NgbModule,
-    HomeModule
+    UserModule,
+    HomeUserModule,
+    SharedModule,
   ],
   providers: [UserService],
   bootstrap: [AppComponent],
