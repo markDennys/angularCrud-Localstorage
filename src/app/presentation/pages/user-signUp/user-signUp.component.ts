@@ -10,11 +10,10 @@ import { Router } from '@angular/router';
 })
 export class UserSignUpComponent implements OnInit {
   user: UsersInterface = {
-    code: 0,
+    code: '',
     name: '',
-    nickname: '',
-    email: '',
-    stack: '',
+    status: '',
+    data: '',
   };
 
   urlCodeUser: any = this.activatedRoute.snapshot.paramMap.get('code');
@@ -23,28 +22,31 @@ export class UserSignUpComponent implements OnInit {
     private userService: UserService,
     private activatedRoute: ActivatedRoute,
     private router: Router
-  ) {}
+  ) { }
 
   ngOnInit(): void {
-    let local = window.location.href;
-    if (!local.endsWith('cadastrar')) {
-      this.user = this.userService.getUsersByCode(+this.urlCodeUser);
-    } else {
-      console.log(local);
-    }
+    // let local = window.location.href;
+    // if (!local.endsWith('cadastrar')) {
+    //   this.user = this.userService.getUsersByCode(+this.urlCodeUser);
+    // } else {
+    //   console.log(local);
+    // }
+    // console.log("asdasd")
   }
 
   signUp(formCadastro: NgForm): void {
     formCadastro.invalid
       ? formCadastro.control.markAllAsTouched()
-      : ((this.user.code = Math.floor(Math.random() * 900000)),
-        this.userService.saveUser(this.user),
-        this.router.navigate(['']) );
+      : (this.userService.saveUser(this.user),
+        this.router.navigate(['']));
+    console.log(formCadastro, "asdasd", this.user)
   }
 
-  editUser(formCadastro: NgForm): void {
-    formCadastro.invalid
-      ? formCadastro.control.markAllAsTouched()
-      : this.userService.editUser(this.user), this.router.navigate(['']) ;
-  }
+  // editUser(formCadastro: NgForm): void {
+  //   formCadastro.invalid
+  //     ? formCadastro.control.markAllAsTouched()
+  //     : this.userService.editUser(this.user), this.router.navigate(['']) ;
+  // }
+
+
 }

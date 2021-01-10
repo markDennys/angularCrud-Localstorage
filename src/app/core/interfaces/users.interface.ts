@@ -1,7 +1,6 @@
 export interface UsersInterface {
-  code: number;
+  code: string;
   name: string;
-  nickname: string;
-  email: string;
-  stack: string;
+  status: string;
+  data?: any;
 }

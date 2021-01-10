@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 export class UserService {
   local = JSON.parse(localStorage.getItem('users') || '[]');
 
-  constructor() {}
+  constructor() { }
 
   saveUser(user: UsersInterface): void {
     if (localStorage.getItem('users') === null) {
@@ -22,15 +22,15 @@ export class UserService {
     return this.local;
   }
 
-  getUsersByCode(code: number): UsersInterface {
-    return this.local.find((user: UsersInterface) => user.code === code);
-  }
+  // getUsersByCode(code: number): UsersInterface {
+  //   return this.local.find((user: UsersInterface) => user.code === code);
+  // }
 
-  editUser(user: UsersInterface): void {
-    let userEdited = this.local.indexOf(user);
-    this.local.splice(userEdited, 1, user);
-    localStorage.setItem('users', JSON.stringify(this.local));
-  }
+  // editUser(user: UsersInterface): void {
+  //   let userEdited = this.local.indexOf(user);
+  //   this.local.splice(userEdited, 1, user);
+  //   localStorage.setItem('users', JSON.stringify(this.local));
+  // }
 
   deleteUser(users: UsersInterface[]) {
     localStorage.setItem('users', JSON.stringify(users));
